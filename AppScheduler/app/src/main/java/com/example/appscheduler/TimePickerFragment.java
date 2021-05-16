@@ -11,15 +11,24 @@ import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
+    /**
+     * This class create the fragment for choose the time
+     */
 
     private TimePickedListener listener;
 
     public static interface TimePickedListener {
+        /**
+         * create an interface that needed because it was implements
+         */
         void onTimePicked(String time);
     }
 
     @Override
     public TimePickerDialog onCreateDialog(Bundle savedInstanceState) {
+        /**
+         * create the "window" that showed up
+         */
         // Use the current time as the default values for the picker
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -34,6 +43,9 @@ public class TimePickerFragment extends DialogFragment
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute)
     {
+        /**
+         * send the input from the user
+         */
         String printMinute = "";
         if(minute < 10)
             printMinute = "0" + Integer.toString(minute);

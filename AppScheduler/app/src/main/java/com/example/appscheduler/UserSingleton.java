@@ -3,12 +3,19 @@ package com.example.appscheduler;
 import java.util.ArrayList;
 
 public class UserSingleton {
-    private static UserSingleton instance = null;
+    /**
+     * This class is my "personal" memory where I can save anything
+     */
+    private static UserSingleton instance = null; // only one instance
 
-    private ArrayList<String> candidates;
-    public ArrayList<String> blocked;
+    private ArrayList<String> candidates; // all apps
+    public ArrayList<String> blocked; // blocked apps
 
     public static UserSingleton getInstance(){
+        /**
+         * The func returns the instance of the class.
+         * if it was made already so return the instance.
+         */
         if (instance == null)
             instance = new UserSingleton();
         return instance;

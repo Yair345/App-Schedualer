@@ -16,17 +16,26 @@ import com.example.appscheduler.AppInfo;
 import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter {
+    /**
+     * A class for my customized adapter
+     */
     private Context context;
     private java.util.ArrayList<AppInfo> apps;
 
     public CustomAdapter(Context context, ArrayList<AppInfo> apps)
     {
+        /**
+         * constructor
+         */
         this.context = context;
         this.apps = apps;
     }
 
     @Override
     public int getCount() {
+        /**
+         * require implements method
+         */
         if (apps != null && apps.size() > 0)
             return apps.size();
         return 0;
@@ -34,11 +43,17 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
+        /**
+         * require implements method
+         */
         return apps.get(position);
     }
 
     @Override
     public long getItemId(int position) {
+        /**
+         * require implements method
+         */
         return position;
     }
 
@@ -47,6 +62,7 @@ public class CustomAdapter extends BaseAdapter {
         if (convertView == null)
             convertView = LayoutInflater.from(context).inflate(R.layout.app_set, parent, false);
 
+        // All the view for one app
         LinearLayout mainLayout = convertView.findViewById(R.id.mainLayout);
         ImageView appIcon = convertView.findViewById(R.id.appIcon);
         TextView appName = convertView.findViewById(R.id.appName);
@@ -57,10 +73,11 @@ public class CustomAdapter extends BaseAdapter {
 
         onOffApp.setChecked(false);
 
+        // My personal memory
         UserSingleton singleton = com.example.appscheduler.UserSingleton.getInstance();
         singleton.blocked = new ArrayList<>();
 
-
+        // If the user clicked on the switch so save/delete the app from the memory
         onOffApp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
