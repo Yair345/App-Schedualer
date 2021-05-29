@@ -71,11 +71,10 @@ public class CustomAdapter extends BaseAdapter {
         appIcon.setImageDrawable(apps.get(position).getIcon());
         appName.setText(apps.get(position).getName());
 
-        onOffApp.setChecked(false);
+        onOffApp.setChecked(apps.get(position).isBlocked()); // set the switch to the correct state
 
         // My personal memory
         UserSingleton singleton = com.example.appscheduler.UserSingleton.getInstance();
-        singleton.blocked = new ArrayList<>();
 
         // If the user clicked on the switch so save/delete the app from the memory
         onOffApp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -83,11 +82,12 @@ public class CustomAdapter extends BaseAdapter {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if(isChecked) {
                     onOffApp.setChecked(true);
-                    singleton.blocked.add(apps.get(position).getName());
+                    singleton.addToBlocked(apps.get(position).getName());
+                     apps.get(position).setBlocked(true);
                  }
                  else {
                      onOffApp.setChecked(false);
-                     singleton.blocked.remove(apps.get(position).getName());
+                     singleton.removeFromBlocked(apps.get(position).getName());
                  }
              }
         });

@@ -7,7 +7,7 @@ LISTEN_PORT = 34679
 MAX_MSG_LENGTH = 1024
 
 
-def main():
+def server():
     print("Setting up server...")  # control
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # server socket
     server_socket.bind(('0.0.0.0', LISTEN_PORT))
@@ -33,6 +33,26 @@ def main():
                     current_socket.close()
                 else:
                     files.save_to_file(codecs.decode(data, 'rot13'))  # save to the data file
+
+
+def main():
+    good_answer = False
+    ans = input("Welcome to my Server!\nWhat do you want to do?\n\t1 - Start server\n\t2 - Show table\n ")  # choice
+    # between the server and the graph
+    while not good_answer:
+        try:
+            action = int(ans)
+            if action != 1 and action != 2:
+                ans = input("Only 1 or 2!\nTry again: ")
+                continue
+            good_answer = True
+        except Exception as e:
+            ans = input("Only numbers!\nTry again: ")
+
+    if action == 1:
+        server()
+    else:
+        files.show_table()
 
 
 if __name__ == "__main__":

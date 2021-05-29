@@ -8,6 +8,9 @@ public class AppInfo {
     */
     private String name;
     private Drawable icon;
+    private boolean blocked;
+
+
 
     public AppInfo(String name, Drawable icon)
     {
@@ -16,6 +19,7 @@ public class AppInfo {
          */
         this.icon = icon;
         this.name = name;
+        this.blocked = false;
     }
 
     public Drawable getIcon() {
@@ -32,5 +36,13 @@ public class AppInfo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
 }

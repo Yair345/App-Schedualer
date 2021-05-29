@@ -39,12 +39,12 @@ def parse_line(line):
     :param line: line from my file
     :return: tuple of (app name, average time, how mach users block this application)
     """
-    parsed_line = line[:-1].split(":")
+    parsed_line = line.split(":")
     app = parsed_line[0]
     duration = parsed_line[1].split(",")[0]
     hour = int(duration.split(".")[0])
-    minute = float(duration.split(".")[1]) / 60
-    return app, str(hour) + str(minute), parsed_line[1].split(",")[1]
+    minute = int(duration.split(".")[1])
+    return app, str(hour) + "." + str(minute), int(parsed_line[1].split(",")[1])
 
 
 def open_file():
@@ -76,6 +76,9 @@ def show_table():
     plt.bar(apps, durations)  # create graph
     plt.xlabel('APPS')
     plt.ylabel('DURATIONS')
+
+    plt.rcParams['font.size'] = '10'
+    plt.xticks(rotation=30)
 
     for i in range(len(apps)):
         plt.text(i, durations[i], times[i])  # add times on top of all column

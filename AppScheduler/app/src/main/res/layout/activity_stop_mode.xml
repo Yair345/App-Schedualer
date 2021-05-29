@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="middle"
         android:fontFamily="sans-serif-black"
-        android:text="Thank You For The Support!"
+        android:text="Thank You!"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/goToStart"
         app:layout_constraintEnd_toEndOf="parent"

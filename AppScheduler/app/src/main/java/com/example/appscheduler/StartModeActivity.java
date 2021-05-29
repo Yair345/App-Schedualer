@@ -32,7 +32,7 @@ public class StartModeActivity extends AppCompatActivity{
          */
         UserSingleton singleton = com.example.appscheduler.UserSingleton.getInstance();
 
-        if (singleton.blocked.isEmpty()) // if the user didn't choose apps to block so he can't continue
+        if (singleton.getBlocked().isEmpty()) // if the user didn't choose apps to block so he can't continue
         {
             Toast.makeText(StartModeActivity.this, "You need to choose apps first!", Toast.LENGTH_SHORT).show();
         }

@@ -9,7 +9,7 @@ public class UserSingleton {
     private static UserSingleton instance = null; // only one instance
 
     private ArrayList<String> candidates; // all apps
-    public ArrayList<String> blocked; // blocked apps
+    private ArrayList<String> blocked = new ArrayList<>(); // blocked apps
 
     public static UserSingleton getInstance(){
         /**
@@ -35,5 +35,14 @@ public class UserSingleton {
 
     public void setBlocked(ArrayList<String> blocked) {
         this.blocked = blocked;
+    }
+
+    public void addToBlocked(String s)
+    {
+        this.blocked.add(s);
+    }
+
+    public void removeFromBlocked(String s){
+        this.blocked.remove(s);
     }
 }
